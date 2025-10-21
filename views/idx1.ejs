@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style1.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="title">🌍 <span style="color:white;">GlobeGallery.com</span></div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="content">
+            <h1>Welcome to Globe Gallery</h1>
+
+        </div>
+    </div>
+    <div id="mainImage" class="image-container">
+        <img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d29ybGQlMjBnbG9iZXxlbnwwfHwwfHx8MA%3D%3D"
+            alt="World Globe" class="image">
+    </div>
+    <div class="input-container">
+        <form id="countryForm" autocomplete="off">
+            <div class="input-group">
+                <input type="text" placeholder="Enter country name" name="countryName" class="country-input"
+                    id="countryInput">
+                <input type="submit" value="Submit" class="btn-submit">
+            </div>
+        </form>
+    </div>
+    <div id="about"></div>
+
+    <div class="card-container">
+        <div class="card card-link" id="culture" onclick="window.location.href='/culture'">
+            <img src="/images/culture.jpg" class="card-img-top" alt="Culture">
+            <div class="card-body">
+                <h2 class="card-title">Culture</h2>
+            </div>
+        </div>
+        <div class="card card-link" id="tourist" onclick="window.location.href='/tourist'">
+            <img src="/images/tourist.jpg" class="card-img-top" alt="Tourist places">
+            <div class="card-body">
+                <h2 class="card-title">Tourist places</h2>
+            </div>
+        </div>
+        <div class="card card-link" id="food" onclick="window.location.href='/food'">
+            <img src="/images/food.jpg" class="card-img-top" alt="Food">
+            <div class="card-body">
+                <h2 class="card-title">Food</h2>
+            </div>
+        </div>
+        <div class="card card-link" id="people" onclick="window.location.href='/people'">
+            <img src="/images/people.jpg" class="card-img-top" alt="People">
+            <div class="card-body">
+                <h2 class="card-title">People</h2>
+            </div>
+        </div>
+    </div>
+
+    <script src="app1.js"></script>
+</body>
+
+</html>

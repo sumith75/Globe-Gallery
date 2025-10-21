@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Food</title>
+    <link rel="stylesheet" href="/people.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="title">People</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#about">About</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+    <h1 style="
+        text-align:center;
+        margin-top:60px;
+        margin-bottom:10px;
+        letter-spacing:2px;
+        color:#4682B4;
+        font-size:2.2rem;
+        font-weight:700;
+        text-shadow:0 2px 12px rgba(70,130,180,0.12);
+    ">
+        <%= country ? country.toUpperCase() : "FOOD" %>
+    </h1>
+
+    <main style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;padding:20px;">
+        <div class="showcase-box" id="showcase-box" style="width:900px;max-width:95%;height:560px;border-radius:12px;border:2px solid #ddd;display:flex;align-items:center;justify-content:center;background:#fff;">
+            <img id="people-img" src="" alt="" style="max-width:100%;max-height:100%;object-fit:contain;display:none;">
+        </div>
+
+        <div class="gallery-controls" style="margin-top:18px;display:flex;gap:12px;">
+            <button id="prev-btn" class="nav prev" style="padding:10px 18px;border-radius:8px;border:1px solid #ccc;background:#fff;cursor:pointer;">&#10094; Previous</button>
+            <button id="next-btn" class="nav next" style="padding:10px 18px;border-radius:8px;border:1px solid #ccc;background:#fff;cursor:pointer;">Next &#10095;</button>
+        </div>
+    </main>
+
+    <section class="gallery" data-country="<%= country %>">
+        <!-- ... -->
+    </section>
+
+    <script src="/people.js"></script>
+    <script>
+        const gallery = document.querySelector('.gallery');
+        const country = gallery ? gallery.getAttribute('data-country') : "";
+        let page = 1;
+        const perPage = 10;
+        let images = [];
+        let currentIndex = 0;
+
+        const imgEl = document.getElementById('people-img');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+
+        async function fetchImages() {
+            const res = await fetch(`/api/people-images?country=${encodeURIComponent(country)}&page=${page}&perPage=${perPage}`);
+            const data = await res.json();
+            if (data.images && data.images.length > 0) {
+                images = images.concat(data.images);
+                currentIndex = images.length - data.images.length;
+                showImage(currentIndex);
+            } else {
+                imgEl.style.display = "none";
+            }
+        }
+
+        function showImage(index) {
+            if (!images.length) return;
+            imgEl.src = images[index].url;
+            imgEl.alt = images[index].alt;
+            imgEl.style.display = "block";
+        }
+
+        nextBtn.addEventListener('click', async () => {
+            currentIndex++;
+            if (currentIndex < images.length) {
+                showImage(currentIndex);
+            } else {
+                page++;
+                await fetchImages();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        fetchImages();
+    </script>
+</body>
+</html>
