@@ -1,4 +1,3 @@
 ## 🌐 Live Demo
 
-Check out the live version of Globe Gallery here:  
-[Globe Gallery Live](https://globe-gallery.onrender.com)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://globe-gallery.onrender.com)
