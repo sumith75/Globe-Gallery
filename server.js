@@ -53,8 +53,8 @@ app.get('/people', (req, res) => {
 // Culture images from Unsplash
 app.get('/api/culture-images', async (req, res) => {
     const country = req.query.country || "culture";
-    const page = req.query.page || 1;
-    const perPage = req.query.perPage || 10;
+    const page = Math.floor(Math.random() * 50) + 1;
+    const perPage = 10;
     const query = `${country} culture`;
     const apiUrl = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&client_id=${UNSPLASH_KEY}&per_page=${perPage}&page=${page}`;
     try {
@@ -73,7 +73,7 @@ app.get('/api/culture-images', async (req, res) => {
 // Tourist images from Pexels
 app.get('/api/tourist-images', async (req, res) => {
     const country = req.query.country || "tourist places";
-    const page = req.query.page || 1;
+    const page =Math.floor(Math.random() * 50) + 1;
     const perPage = req.query.perPage || 10;
     const query = `${country} tourist places`;
     const apiUrl = `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=${perPage}&page=${page}`;
@@ -95,7 +95,7 @@ app.get('/api/tourist-images', async (req, res) => {
 // Food images from Unsplash
 app.get('/api/food-images', async (req, res) => {
     const country = req.query.country || "food";
-    const page = req.query.page || 1;
+    const page = Math.floor(Math.random() * 50) + 1;
     const perPage = req.query.perPage || 10;
     const query = `${country} food`;
     const apiUrl = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&client_id=${UNSPLASH_KEY}&per_page=${perPage}&page=${page}`;
@@ -116,7 +116,7 @@ app.get('/api/food-images', async (req, res) => {
 app.get('/api/people-images', async (req, res) => {
     const PEXELS_KEY = "31B3nDoIxG88ckvIRkFQpntzSyTyUVpwmnJANgaTYqZOMhnp5i8lRU10";
     const country = req.query.country || "people";
-    const page = req.query.page || 1;
+    const page = Math.floor(Math.random() * 50) + 1;
     const perPage = req.query.perPage || 10;
     const query = `${country} people`;
     const apiUrl = `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=${perPage}&page=${page}`;
