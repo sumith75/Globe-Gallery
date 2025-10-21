@@ -1,7 +1,7 @@
 # Globe Gallery 🌍
 Check it out here: [Globe Gallery Live](https://globe-gallery.onrender.com)
 
-**Globe Gallery** is a simple web application for people who love to travel.  
+**Globe Gallery** is a simple web application for people who love to travel and explore the world.  
 It allows users to **virtually explore countries** through beautiful images fetched from APIs like **Unsplash** and **Pexels**.
 
 
